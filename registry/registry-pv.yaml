@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: kube-system-kube-registry-pv
+  labels:
+    kubernetes.io/cluster-service: "true"
+spec:
+  capacity:
+    storage: 1Mi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: k8s-01
+    path: "/opt/docker-registry"
