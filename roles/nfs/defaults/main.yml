@@ -1,0 +1,2 @@
+nfs_exports:
+  - "/opt/docker-registry *(rw,sync,no_root_squash)"
