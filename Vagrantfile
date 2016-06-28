@@ -71,6 +71,7 @@ Vagrant.configure("2") do |config|
         vb.gui = $vm_gui
         vb.memory = $vm_memory
         vb.cpus = $vm_cpus
+        vb.linked_clone = true
       end
 
       ip = "#{$subnet}.#{i+100}"
@@ -95,6 +96,7 @@ Vagrant.configure("2") do |config|
           ansible.sudo = true
           ansible.limit = "all"
           ansible.host_key_checking = false
+          #ansible.verbose = true
           ansible.raw_arguments = ["--forks=#{$num_instances}"]
           ansible.host_vars = host_vars
           #ansible.tags = ['download']
