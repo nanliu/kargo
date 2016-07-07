@@ -16,7 +16,7 @@ $vm_cpus = 1
 $shared_folders = {}
 $forwarded_ports = {}
 $subnet = "172.17.8"
-$box = "bento/ubuntu-14.04"
+$box = "boxcutter/ubuntu1604"
 
 host_vars = {}
 
@@ -99,7 +99,7 @@ Vagrant.configure("2") do |config|
           #ansible.verbose = true
           ansible.raw_arguments = ["--forks=#{$num_instances}"]
           ansible.host_vars = host_vars
-          #ansible.tags = ['download']
+          #ansible.tags = ['apps']
           ansible.groups = {
             # The first three nodes should be etcd servers
             "etcd" => ["k8s-0[1:3]"],
