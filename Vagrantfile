@@ -48,6 +48,12 @@ Vagrant.configure("2") do |config|
     config.vbguest.auto_update = false
   end
 
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.proxy.http     = ENV['http_proxy']
+    config.proxy.https    = ENV['https_proxy']
+    config.proxy.no_proxy = ENV['no_proxy'] || "localhost,127.0.0.1"
+  end
+
   (1..$num_instances).each do |i|
     config.vm.define vm_name = "%s-%02d" % [$instance_name_prefix, i] do |config|
       config.vm.hostname = vm_name
