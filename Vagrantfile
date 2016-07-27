@@ -14,7 +14,7 @@ $vm_gui = false
 $vm_memory = 2048
 $vm_cpus = 2
 $shared_folders = {}
-$forwarded_ports = {}
+$forwarded_ports = { 8080 => 8080, 8181 => 8181 }
 $subnet = "172.17.8"
 $box = "boxcutter/ubuntu1604"
 
@@ -48,9 +48,9 @@ Vagrant.configure("2") do |config|
     config.vbguest.auto_update = false
   end
 
-  if Vagrant.has_plugin?("vagrant-proxyconf")
+  if Vagrant.has_plugin?("vagrant-proxyconf") && ENV['http_proxy']
     config.proxy.http     = ENV['http_proxy']
-    config.proxy.https    = ENV['https_proxy']
+    config.proxy.https    = ENV['https_proxy'] || ENV['http_proxy']
     config.proxy.no_proxy = ENV['no_proxy'] || "localhost,127.0.0.1"
   end
 
@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
       end
 
       $forwarded_ports.each do |guest, host|
-        config.vm.network "forwarded_port", guest: guest, host: host, auto_correct: true
+        config.vm.network "forwarded_port", guest: guest, host: host, auto_correct: true if i == 1
       end
 
       ["vmware_fusion", "vmware_workstation"].each do |vmware|
