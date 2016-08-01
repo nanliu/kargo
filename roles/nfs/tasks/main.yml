@@ -21,12 +21,6 @@
   register: etc_exports
   notify: restart nfs
 
-- name: Restart NFS
-  service:
-    name: nfs-kernel-server
-    state: restarted
-  when: etc_exports.changed
-
 - name: NFS service
   service:
     name: nfs-kernel-server
