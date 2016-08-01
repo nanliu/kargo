@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
         vb.gui = $vm_gui
         vb.memory = $vm_memory
         vb.cpus = $vm_cpus
-        vb.linked_clone = true
+        vb.linked_clone = false
       end
 
       ip = "#{$subnet}.#{i+100}"

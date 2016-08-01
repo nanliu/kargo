@@ -2,4 +2,4 @@
   service:
     name: nfs-kernel-server
     state: restarted
-  when: nfs_exports.changed
+  when: nfs_exports|length
