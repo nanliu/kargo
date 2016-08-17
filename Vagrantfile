@@ -14,7 +14,7 @@ $vm_gui = false
 $vm_memory = 2048
 $vm_cpus = 2
 $shared_folders = {}
-$forwarded_ports = { 8080 => 8080, 8181 => 8181 }
+$forwarded_ports = {}
 $subnet = "172.17.8"
 $box = "boxcutter/ubuntu1604"
 
