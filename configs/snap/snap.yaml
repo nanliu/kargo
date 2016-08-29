@@ -16,7 +16,7 @@ spec:
       hostNetwork: true
       containers:
       - name: snap
-        image: localhost:5000/snap
+        image: nanliu/k8s-snap
         env:
           - name: SNAP_SEED_IP
             valueFrom:
